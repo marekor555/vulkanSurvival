@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bj44mcca0qt4d"]
+
+[ext_resource type="FontFile" uid="uid://do1wlhakpyaao" path="res://Assets/type_light_sans/TypeLightSans.otf" id="1_6daw4"]
+[ext_resource type="FontFile" uid="uid://oehcrtmxcu1a" path="res://tiny5/fonts/otf/Tiny5-LCDRegular.otf" id="2_vsvqe"]
+
+[resource]
+Button/font_sizes/font_size = 53
+Button/fonts/font = ExtResource("1_6daw4")
+Label/font_sizes/font_size = 90
+Label/fonts/font = ExtResource("2_vsvqe")

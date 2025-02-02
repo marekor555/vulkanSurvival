@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtnoikd55jn84"]
+
+[ext_resource type="Texture2D" uid="uid://dajla0p4xrvgk" path="res://Assets/key.png" id="1_brkol"]
+[ext_resource type="Script" path="res://key.gd" id="1_dg1rt"]
+[ext_resource type="AudioStream" uid="uid://btsnh8tby10dd" path="res://Assets/collect.wav" id="3_14wtu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yovm"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_wwfpw"]
+_data = [Vector2(0.00739371, 0.946903), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_h34f2"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_dg1rt")
+
+[node name="Key" type="Sprite2D" parent="."]
+texture = ExtResource("1_brkol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6yovm")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_wwfpw")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_h34f2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_14wtu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

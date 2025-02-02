@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b32ua8udxweay"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_lb1tq"]
+[ext_resource type="Texture2D" uid="uid://bha2v1fuu6li4" path="res://Assets/player.png" id="2_latjh"]
+[ext_resource type="Texture2D" uid="uid://bgklpqrjiy3rt" path="res://Assets/player_dead.png" id="3_uibvd"]
+
+[sub_resource type="Curve" id="Curve_mnl2u"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_i1nmo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.441774, 0.60177), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw3bm"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lb1tq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 20
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+lifetime = 5.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("Curve_mnl2u")
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_i1nmo")
+color = Color(0.482353, 1, 0, 1)
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("2_latjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xw3bm")
+
+[node name="PlayerDead" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_uibvd")

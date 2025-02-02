@@ -6,6 +6,8 @@ func _on_timer_timeout():
 	molten = true
 	$Ground.hide()
 	$Lava.show()
+	$CPUParticles2D.emitting = true
+	$AudioStreamPlayer.play()
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		if body.get_name() == "Player":

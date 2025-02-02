@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://k7dj0mw3uie1"]
+
+[ext_resource type="Script" path="res://cart.gd" id="1_0tuaf"]
+[ext_resource type="Texture2D" uid="uid://duidyqlu6xjs7" path="res://Assets/cart.png" id="1_cmskn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkilu"]
+size = Vector2(52, 56)
+
+[sub_resource type="Gradient" id="Gradient_ilonh"]
+colors = PackedColorArray(0, 0, 0, 1, 0.329158, 0.329158, 0.329158, 1)
+
+[node name="Cart" type="CharacterBody2D"]
+script = ExtResource("1_0tuaf")
+
+[node name="Cart" type="Sprite2D" parent="."]
+texture = ExtResource("1_cmskn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_tkilu")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 32)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_max = 50.0
+color_ramp = SubResource("Gradient_ilonh")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_lb1tq"]
 [ext_resource type="Texture2D" uid="uid://bha2v1fuu6li4" path="res://Assets/player.png" id="2_latjh"]
-[ext_resource type="Texture2D" uid="uid://bgklpqrjiy3rt" path="res://Assets/player_dead.png" id="3_uibvd"]
+[ext_resource type="Texture2D" uid="uid://bgdyt6snavel6" path="res://Assets/player_wet.png" id="3_pxixw"]
 
 [sub_resource type="Curve" id="Curve_mnl2u"]
 min_value = -360.0
@@ -33,7 +33,7 @@ drag_bottom_margin = 0.1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 20
-lifetime = 5.0
+lifetime = 2.0
 gravity = Vector2(0, 0)
 angular_velocity_min = 1.0
 angular_velocity_max = 1.0
@@ -49,6 +49,12 @@ texture = ExtResource("2_latjh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xw3bm")
 
-[node name="PlayerDead" type="Sprite2D" parent="."]
+[node name="PlayerWet" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_uibvd")
+texture = ExtResource("3_pxixw")
+
+[node name="WetTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="WetTimer" to="." method="_on_wet_timer_timeout"]

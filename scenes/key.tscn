@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dajla0p4xrvgk" path="res://Assets/key.png" id="1_brkol"]
 [ext_resource type="Script" path="res://key.gd" id="1_dg1rt"]
-[ext_resource type="AudioStream" uid="uid://btsnh8tby10dd" path="res://Assets/collect.wav" id="3_14wtu"]
+[ext_resource type="AudioStream" uid="uid://rm6631jh5u1t" path="res://Assets/kenney_sci-fi-sounds/Audio/forceField_000.ogg" id="3_je5xp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yovm"]
 size = Vector2(64, 64)
@@ -40,6 +40,6 @@ hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_h34f2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_14wtu")
+stream = ExtResource("3_je5xp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

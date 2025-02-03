@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2msbtu4q7sxe"]
+
+[ext_resource type="PackedScene" uid="uid://bnrjsjvi14761" path="res://scenes/tile.tscn" id="1_okce2"]
+
+[node name="Tile" instance=ExtResource("1_okce2")]
+molten = true
+
+[node name="Lava" parent="." index="4"]
+visible = true
+
+[node name="CPUParticles2D" parent="." index="5"]
+emitting = true
